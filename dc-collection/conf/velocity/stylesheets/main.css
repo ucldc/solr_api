@@ -7311,13 +7311,18 @@ a {
 }
 
 /* line 78, ../../../../ucldc_solr_css/sass/main.scss */
+h1 {
+  color: #1295d8;
+}
+
+/* line 81, ../../../../ucldc_solr_css/sass/main.scss */
 .navigators h2 {
   background: #ffb511;
   padding: 2px 5px;
   color: #005581;
 }
 
-/* line 84, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 87, ../../../../ucldc_solr_css/sass/main.scss */
 .navigators ul {
   list-style: none;
   margin: 0;
@@ -7327,51 +7332,51 @@ a {
   color: #7c7e7f;
 }
 
-/* line 93, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 96, ../../../../ucldc_solr_css/sass/main.scss */
 .navigators ul li {
   color: #7c7e7f;
   padding: 2px;
 }
 
-/* line 100, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 103, ../../../../ucldc_solr_css/sass/main.scss */
 .facet-field {
   font-weight: bold;
   color: #005581;
 }
 
-/* line 105, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 108, ../../../../ucldc_solr_css/sass/main.scss */
 .highlight {
   color: white;
   background-color: #7c7e7f;
   border: 1px black solid;
 }
 
-/* line 111, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 114, ../../../../ucldc_solr_css/sass/main.scss */
 .highlight-box {
   margin-left: 15px;
 }
 
-/* line 115, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 118, ../../../../ucldc_solr_css/sass/main.scss */
 .field-name {
   font-weight: bold;
 }
 
-/* line 119, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 122, ../../../../ucldc_solr_css/sass/main.scss */
 .highlighted-facet-field {
   background: white;
 }
 
-/* line 123, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 126, ../../../../ucldc_solr_css/sass/main.scss */
 .constraints {
   margin-top: 10px;
 }
 
-/* line 127, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 130, ../../../../ucldc_solr_css/sass/main.scss */
 #query-form {
   width: 80%;
 }
 
-/* line 133, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 136, ../../../../ucldc_solr_css/sass/main.scss */
 .query-box, .constraints {
   padding: 5px;
   margin: 5px;
@@ -7380,7 +7385,7 @@ a {
   letter-spacing: 0.08em;
 }
 
-/* line 141, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 144, ../../../../ucldc_solr_css/sass/main.scss */
 .query-box #q {
   margin-left: 8px;
   width: 60%;
@@ -7390,7 +7395,7 @@ a {
   padding: 0.4em;
 }
 
-/* line 154, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 157, ../../../../ucldc_solr_css/sass/main.scss */
 .query-boost {
   top: 10px;
   left: 50px;
@@ -7398,19 +7403,19 @@ a {
   font-size: 0.8em;
 }
 
-/* line 162, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 165, ../../../../ucldc_solr_css/sass/main.scss */
 .query-box .inputs {
   left: 180px;
   position: relative;
 }
 
-/* line 168, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 171, ../../../../ucldc_solr_css/sass/main.scss */
 #logo {
   margin: 10px;
   border-style: none;
 }
 
-/* line 173, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 176, ../../../../ucldc_solr_css/sass/main.scss */
 .pagination {
   padding-left: 33%;
   background: #ECE6DE;
@@ -7420,7 +7425,7 @@ a {
   padding-bottom: 5px;
 }
 
-/* line 182, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 185, ../../../../ucldc_solr_css/sass/main.scss */
 .result-document {
   border: 1px solid #7C7E7F;
   padding: 5px;
@@ -7429,22 +7434,22 @@ a {
   margin-bottom: 15px;
 }
 
-/* line 190, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 193, ../../../../ucldc_solr_css/sass/main.scss */
 .result-document div {
   padding: 5px;
 }
 
-/* line 194, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 197, ../../../../ucldc_solr_css/sass/main.scss */
 .result-title {
   width: 60%;
 }
 
-/* line 198, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 201, ../../../../ucldc_solr_css/sass/main.scss */
 .result-body {
   background: #DBD5CD;
 }
 
-/* line 202, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 205, ../../../../ucldc_solr_css/sass/main.scss */
 .doc-thumb-box {
   float: left;
   margin: 5px;
@@ -7454,13 +7459,13 @@ a {
   position: relative;
 }
 
-/* line 211, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 214, ../../../../ucldc_solr_css/sass/main.scss */
 .doc-title {
   font-weight: bold;
   font-size: larger;
 }
 
-/* line 216, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 219, ../../../../ucldc_solr_css/sass/main.scss */
 .doc-view {
   float: left;
   width: 60%;
@@ -7471,7 +7476,7 @@ a {
   margin-bottom: 15px;
 }
 
-/* line 226, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 229, ../../../../ucldc_solr_css/sass/main.scss */
 .mlt-box {
   float: right;
   margin: 5px;
@@ -7482,34 +7487,34 @@ a {
   position: relative;
 }
 
-/* line 240, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 243, ../../../../ucldc_solr_css/sass/main.scss */
 .map {
   float: right;
   position: relative;
   top: -25px;
 }
 
-/* line 246, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 249, ../../../../ucldc_solr_css/sass/main.scss */
 .result-document:nth-child(2n+1) {
   background-color: #ECE6DE;
 }
 
-/* line 251, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 254, ../../../../ucldc_solr_css/sass/main.scss */
 .selected-facet-field {
   font-weight: bold;
 }
 
-/* line 255, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 258, ../../../../ucldc_solr_css/sass/main.scss */
 li.show {
   list-style: disc;
 }
 
-/* line 259, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 262, ../../../../ucldc_solr_css/sass/main.scss */
 .group-value {
   font-weight: bold;
 }
 
-/* line 263, ../../../../ucldc_solr_css/sass/main.scss */
+/* line 266, ../../../../ucldc_solr_css/sass/main.scss */
 .error {
   color: white;
   background-color: red;
