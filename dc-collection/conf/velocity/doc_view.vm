@@ -63,13 +63,13 @@ $publisher<br/>
 <div class="mlt-box">
 #set($mlt = $mltResults.get($docId))
   #if($mlt && $mlt.size() > 0)
-    <ul>
+      <div>
       #foreach($mltHit in $mlt)
         #set($mltId = $mltHit.getFieldValue('id'))
-        <li>
-          <div>
+        <div>
+          <div style="float:left">
             <a href="#{url_for_view}?q=id:$mltId">
-              $mltId</a>
+              <img src="$mltHit.getFieldValue('url_thumbnail')" alt="$mltId"/></a>
           </div>
           <div>
             <span class="field-name">
@@ -88,8 +88,8 @@ $publisher<br/>
             </span>
             $mltHit.getFieldValue('description')
           </div>
-        </li>
+        </div>
       #end    ## end for each mltHit in $mlt
-    </ul>
+      </div>
   #end
 </div>
