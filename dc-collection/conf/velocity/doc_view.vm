@@ -4,10 +4,10 @@
 
 #parse('doc_shortcuts.vm')
 
-<div class="doc-thumb-box">
+<div id="doc-thumb-box" class="small-3 large-3 columns">
   <a href="$urlItem"><img src="$urlThumbnail" height="100" width="100" align="center"></a>
 </div>
-<div class="doc-view">
+<div id="doc-view" class="small-3 large-6 columns">
 <div class="doc-title">
   ## Title, hyperlinked
   <a href="$urlItem" target="_blank">
@@ -60,13 +60,12 @@ $publisher<br/>
 
 </div>
 
-<div class="mlt-box">
+<div id="mlt-box" class="large-3 columns">
 #set($mlt = $mltResults.get($docId))
   #if($mlt && $mlt.size() > 0)
-      <div>
       #foreach($mltHit in $mlt)
         #set($mltId = $mltHit.getFieldValue('id'))
-        <div>
+        <div class="row">
           <div style="float:left">
             <a href="#{url_for_view}?q=id:$mltId">
               <img src="$mltHit.getFieldValue('url_thumbnail')" alt="$mltId"/></a>
@@ -78,18 +77,9 @@ $publisher<br/>
             $mltHit.getFieldValue('title')
           </div>
           <div>
-          <!--  <span class="field-name">
-              Creator:
-            </span>
-            $mltHit.getFieldValue('creator')
--->
-            <span class="field-name">
-              Description:
-            </span>
             $mltHit.getFieldValue('description')
           </div>
         </div>
       #end    ## end for each mltHit in $mlt
-      </div>
   #end
 </div>

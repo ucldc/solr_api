@@ -14,6 +14,6 @@
   #parse("error.vm")
 </div>
 
-<div class="results">
+<div id="results" class="row">
     #parse("doc_view.vm")
 </div>
