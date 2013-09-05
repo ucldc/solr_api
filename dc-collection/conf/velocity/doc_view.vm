@@ -65,7 +65,7 @@ $publisher<br/>
   #if($mlt && $mlt.size() > 0)
       #foreach($mltHit in $mlt)
         #set($mltId = $mltHit.getFieldValue('id'))
-        <div class="row">
+        <div class="row mlt">
           <div style="float:left">
             <a href="#{url_for_view}?q=id:$mltId">
               <img src="$mltHit.getFieldValue('url_thumbnail')" alt="$mltId"/></a>
@@ -76,9 +76,12 @@ $publisher<br/>
             </span>
             $mltHit.getFieldValue('title')
           </div>
+          
+          #if($mltHit.getFieldValue('description'))
           <div>
             $mltHit.getFieldValue('description')
           </div>
+          #end
         </div>
       #end    ## end for each mltHit in $mlt
   #end

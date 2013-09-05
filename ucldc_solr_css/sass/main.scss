@@ -226,7 +226,7 @@ h1 {
   margin-bottom: 15px;
 }
 
-.mlt-box{
+#mlt-box{
   float: right;
   margin: 5px;
   margin-top: 0px;
@@ -238,6 +238,10 @@ h1 {
 
 .mlt{
   
+}
+
+.row .mlt {
+  padding: 8px;
 }
 
 .map{
