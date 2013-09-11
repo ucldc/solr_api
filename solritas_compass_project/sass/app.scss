@@ -1,3 +1,29 @@
+//Define colors
+/* primary UC colors */
+$ucblue:        #1295D8;
+$ucgold:        #FFB511;
+$ucblue_dk:     #005581; 
+$ucblue_lt:     #72CDF4;
+$ucgold_med:    #FFD200;
+$ucgold_lt:     #FFE552;
+$ucgray:        #7C7E7F;
+
+/* secondary colors */
+$orange:        #FF6E1B;
+$orange_lt:     #FF8F28;
+$pink:          #E44C9A;
+$pink_lt:       #FEB2E0;
+$teal:          #00778B;
+$teal_lt:       #00A3AD;
+$gray_wm_8:     #8F8884;
+$gray_wm_3:     #BEB6AF;
+$gray_wm_1:     #DBD5CD;
+$gold_metallic: #B4975A;
+
+/* Some text colors */
+$off_black: 	#414042;
+$gray_bg:	#F3F3F4;
+
 // Global Foundation Settings
 @import "settings";
 
@@ -53,26 +79,3 @@
 // @import "foundation/components/thumbs";
 // @import "foundation/components/tooltips";
 // @import "foundation/components/dropdown";
-
-//Define colors
-/* primary UC colors */
-$ucblue:        #1295D8;
-$ucgold:        #FFB511;
-$ucblue_dk:     #005581; 
-$ucblue_lt:     #72CDF4;
-$ucgold_med:    #FFD200;
-$ucgold_lt:     #FFE552;
-$ucgray:        #7C7E7F;
-
-/* secondary colors */
-$orange:        #FF6E1B;
-$orange_lt:     #FF8F28;
-$pink:          #E44C9A;
-$pink_lt:       #FEB2E0;
-$teal:          #00778B;
-$teal_lt:       #00A3AD;
-$gray_wm_8:     #8F8884;
-$gray_wm_3:     #BEB6AF;
-$gray_wm_1:     #DBD5CD;
-$gold_metallic: #B4975A;
-

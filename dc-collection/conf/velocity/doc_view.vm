@@ -10,8 +10,10 @@
 <div id="doc-view" class="small-3 large-6 columns">
 <div class="doc-title">
   ## Title, hyperlinked
+  <h2>
   <a href="$urlItem" target="_blank">
-    <b>$title</b></a>
+    $title</a>
+  </h2>
 </div>
 
 #if($doc.getFieldValue('campus'))
@@ -46,7 +48,7 @@ $publisher<br/>
   #if($fieldName != 'campus' && $fieldName != 'repository' && $fieldName != 'publisher')
   #if($fieldName != 'collection_name' && $fieldName != 'title')
   #if($fieldName != 'id' && $fieldName != 'timestamp' && $fieldName != '_version_')
-  #if($fieldName != 'url_thumbnail')
+  #if($fieldName != 'url_thumbnail' && $fieldName != 'score')
   <h3>$fieldName</h3>
     #foreach( $value in $doc.getFieldValues($fieldName) )
       $value<br/>
@@ -61,6 +63,7 @@ $publisher<br/>
 </div>
 
 <div id="mlt-box" class="large-3 columns">
+<h3>Similar items:</h3>
 #set($mlt = $mltResults.get($docId))
   #if($mlt && $mlt.size() > 0)
       #foreach($mltHit in $mlt)
@@ -71,10 +74,9 @@ $publisher<br/>
               <img src="$mltHit.getFieldValue('url_thumbnail')" alt="$mltId"/></a>
           </div>
           <div>
-            <span class="field-name">
-              Title:
-            </span>
-            $mltHit.getFieldValue('title')
+            <a class="mlt-title-link" href="#{url_for_view}?q=id:$mltId">
+            $mltHit.getFieldValue('title').get(0)
+	    </a>
           </div>
           
           #if($mltHit.getFieldValue('description'))

@@ -1,5 +1,6 @@
 @import "app";
 
+
 .row {
   min-width: 90%;
 }
@@ -42,10 +43,6 @@ body {
   font-size: 10pt;
 }
 
-a {
-  color: $ucblue;
-}
-
 .navigators {
   float: left;
   margin: 5px;
@@ -79,9 +76,6 @@ a {
   border-bottom: 1px solid #ffffff;
 }
 
-h1 {
-    color: $ucblue;
-}
 .navigators h2 {
   background: $ucgold;
   padding: 2px 5px;
@@ -220,14 +214,9 @@ h1 {
   font-size: larger;
 }
 
-.doc-view{
-  float: left;
-  width: 60%;
+#doc-view{
   border: 1px solid #7C7E7F;
-  padding: 5px;
-  margin: 5px;
-  margin-left: 210px;
-  margin-bottom: 15px;
+  background-color: $gray_wm_1;
 }
 
 #mlt-box{
@@ -241,7 +230,16 @@ h1 {
 }
 
 .mlt{
-  
+    
+}
+
+
+a.mlt-title-link {
+  color: $off_black;
+}
+
+a.mlt-title-link:hover {
+  color: $ucblue;
 }
 
 .row .mlt {
