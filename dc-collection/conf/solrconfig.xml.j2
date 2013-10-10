@@ -1231,7 +1231,8 @@
   <!-- If you wish to hide files under ${solr.home}/conf, explicitly
        register the ShowFileRequestHandler using: 
     -->
-  <!--
+  <!-- needed to server static files from velocity under solr dir -->
+  {% if solr_read_only %}
      <requestHandler name="/admin/file" 
                      class="solr.admin.ShowFileRequestHandler" >
        <lst name="invariants">
@@ -1239,7 +1240,7 @@
          <str name="hidden">anotherfile.txt</str> 
        </lst>
      </requestHandler>
-    -->
+  {% endif %}
 
   <!-- ping/healthcheck -->
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler"
