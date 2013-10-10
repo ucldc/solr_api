@@ -87,9 +87,9 @@
 </div>
 
 ## Author
-#if($doc.getFieldValue('author'))
+#if($doc.getFieldValue('creator'))
   <div>
-    Author: #field('author')
+    Author: #field('creator')
   </div>
 #end
 
@@ -135,7 +135,7 @@
             <span class="field-name">
               Author:
             </span>
-            $mltHit.getFieldValue('author')
+            $mltHit.getFieldValue('creator')
             <span class="field-name">
               Description:
             </span>
