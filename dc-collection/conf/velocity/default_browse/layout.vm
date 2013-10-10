@@ -1,0 +1,24 @@
+#**
+ *  Overall HTML page layout
+ *#
+
+<html>
+<head>
+  #parse("default_browse/head.vm")
+</head>
+  <body>
+    <div id="admin"><a href="#url_root/#/#core_name">Solr Admin</a></div>
+    <div id="header">
+      #parse("default_browse/header.vm")
+    </div>
+    <div id="tabs">
+      #parse("default_browse/tabs.vm")
+    </div>
+    <div id="content">
+      $content
+    </div>
+    <div id="footer">
+      #parse("default_browse/footer.vm")
+    </div>
+  </body>
+</html>

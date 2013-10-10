@@ -1,0 +1,10 @@
+#**
+ *  Overall Facet display block
+ *  Invokes the 4 facet and 1 cluster template
+ *#
+
+#parse('default_browse/facet_fields.vm')
+#parse('default_browse/facet_queries.vm')
+#parse('default_browse/facet_ranges.vm')
+#parse('default_browse/facet_pivot.vm')
+#parse('default_browse/cluster.vm')

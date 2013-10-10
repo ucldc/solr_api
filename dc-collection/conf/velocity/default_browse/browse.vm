@@ -1,0 +1,33 @@
+#**
+ *  Main entry point into the /browse templates
+ *#
+
+#set($searcher = $request.searcher)
+#set($params = $request.params)
+#set($clusters = $response.response.clusters)
+#set($mltResults = $response.response.get("moreLikeThis"))
+#set($annotate = $params.get("annotateBrowse"))
+#parse('default_browse/query_form.vm')
+#parse('default_browse/did_you_mean.vm')
+
+<div class="navigators">
+  #parse("default_browse/facets.vm")
+</div>
+
+<div class="pagination">
+  #parse("default_browse/pagination_top.vm")
+</div>
+
+## Show Error Message, if any
+<div class="error">
+  #parse("default_browse/error.vm")
+</div>
+
+## Render Results, actual matching docs
+<div class="results">
+  #parse("default_browse/results_list.vm")
+</div>
+
+<div class="pagination">
+  #parse("default_browse/pagination_bottom.vm")
+</div>
