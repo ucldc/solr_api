@@ -800,7 +800,8 @@
        of SearchComponents (see below) and supports distributed
        queries across multiple shards
     -->
-  <requestHandler name="/select" class="solr.SearchHandler">
+  <requestHandler name="/select" class="solr.SearchHandler" 
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
@@ -1105,7 +1106,8 @@
        This handler will pick a response format to match the input
        if the 'wt' parameter is not explicit
     -->
-  <requestHandler name="/update" class="solr.UpdateRequestHandler">
+  <requestHandler name="/update" class="solr.UpdateRequestHandler"
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <!-- See below for information on defining 
          updateRequestProcessorChains that can be used by name 
          on each Update Request
@@ -1136,7 +1138,8 @@
     -->
   <requestHandler name="/update/extract" 
                   startup="lazy"
-                  class="solr.extraction.ExtractingRequestHandler" >
+                  class="solr.extraction.ExtractingRequestHandler" 
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <lst name="defaults">
       <str name="lowernames">true</str>
       <str name="uprefix">ignored_</str>
@@ -1169,7 +1172,8 @@
    -->
   <requestHandler name="/analysis/field" 
                   startup="lazy"
-                  class="solr.FieldAnalysisRequestHandler" />
+                  class="solr.FieldAnalysisRequestHandler"
+  	{% if solr_read_only %}enable="false"{% endif %} />
 
 
   <!-- Document Analysis Handler
@@ -1204,7 +1208,8 @@
   -->
   <requestHandler name="/analysis/document" 
                   class="solr.DocumentAnalysisRequestHandler" 
-                  startup="lazy" />
+                  startup="lazy"
+  	{% if solr_read_only %}enable="false"{% endif %} />
 
   <!-- Admin Handlers
 
@@ -1212,7 +1217,8 @@
        RequestHandlers.  
     -->
   <requestHandler name="/admin/" 
-                  class="solr.admin.AdminHandlers" />
+                  class="solr.admin.AdminHandlers"
+  	{% if solr_read_only %}enable="false"{% endif %} />
   <!-- This single handler is equivalent to the following... -->
   <!--
      <requestHandler name="/admin/luke"       class="solr.admin.LukeRequestHandler" />
@@ -1236,7 +1242,8 @@
     -->
 
   <!-- ping/healthcheck -->
-  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler"
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <lst name="invariants">
       <str name="q">solrpingquery</str>
     </lst>
@@ -1252,7 +1259,8 @@
   </requestHandler>
 
   <!-- Echo the request contents back to the client -->
-  <requestHandler name="/debug/dump" class="solr.DumpRequestHandler" >
+  <requestHandler name="/debug/dump" class="solr.DumpRequestHandler"
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <lst name="defaults">
      <str name="echoParams">explicit</str> 
      <str name="echoHandler">true</str>
@@ -1272,7 +1280,8 @@
 
        https://wiki.apache.org/solr/SolrCloud/
     -->
-  <requestHandler name="/replication" class="solr.ReplicationHandler" > 
+  <requestHandler name="/replication" class="solr.ReplicationHandler"
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <!--
        To enable simple master/slave replication, uncomment one of the 
        sections below, depending on whether this solr instance should be
@@ -1438,7 +1447,8 @@
        See http://wiki.apache.org/solr/SpellCheckComponent for details
        on the request parameters.
     -->
-  <requestHandler name="/spell" class="solr.SearchHandler" startup="lazy">
+  <requestHandler name="/spell" class="solr.SearchHandler" startup="lazy"
+  	{% if solr_read_only %}enable="false"{% endif %} >
     <lst name="defaults">
       <str name="df">text</str>
       <!-- Solr will use suggestions from both the 'default' spellchecker
