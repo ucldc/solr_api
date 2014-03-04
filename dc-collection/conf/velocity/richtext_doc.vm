@@ -122,6 +122,20 @@ $publisher
 #end
 </div>
 
+## Entities recognized
+#if ($doc.getFieldValue('entity_ss'))
+<div>
+   <strong>Entities:</strong>
+#foreach( $entity in  $doc.getFieldValue('entity_ss') )
+#if ( $entity.matches('http(s|):.*'))
+<a href="$entity" target="_blank">$entity</a><br/>
+#else
+$entity<br/>
+#end
+#end
+</div>
+#end
+
 ## Main content of doc
 <div class="result-body">
   #field('description')
