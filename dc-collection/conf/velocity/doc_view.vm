@@ -44,7 +44,7 @@ $publisher<br/>
 
 ## Item Identifier (URL?)
 <div>
-   <strong>Item URL:</strong>
+   <h3>Item URL:</h3>
 #foreach( $identifier in  $doc.getFieldValue('identifier') )
 #if ( $identifier.matches('http(s|):.*'))
 <a href="$identifier" target="_blank">$identifier</a><br/>
