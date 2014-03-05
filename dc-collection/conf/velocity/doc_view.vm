@@ -42,6 +42,20 @@ $publisher<br/>
 #end
 #end
 
+#if($doc.getFieldValue('entity_ss'))
+  <h3>Recognized named entities:</h3>
+#foreach ( $entity in $doc.getFieldValue('entity_ss') )
+	#if ( $entity.matches('http(s|):.*'))
+	  <a href="$value">$entity</a>
+	#else
+          $entity
+	#end
+      <br/>
+#end
+#end
+
+<br/>
+
 #foreach( $fieldName in $doc.fieldNames )
   #set($rgxSS = ".*_ss$")
   #if(!$fieldName.matches($rgxSS))
@@ -51,7 +65,12 @@ $publisher<br/>
   #if($fieldName != 'url_thumbnail' && $fieldName != 'score')
   <h3>$fieldName</h3>
     #foreach( $value in $doc.getFieldValues($fieldName) )
-      $value<br/>
+	#if ( $value.matches('http(s|):.*'))
+	  <a href="$value">$value</a>
+	#else
+          $value
+	#end
+      <br/>
     #end
   #end
   #end
