@@ -42,6 +42,17 @@ $publisher<br/>
 #end
 #end
 
+## Item Identifier (URL?)
+<div>
+   <strong>Item URL:</strong>
+#foreach( $identifier in  $doc.getFieldValue('identifier') )
+#if ( $identifier.matches('http(s|):.*'))
+<a href="$identifier" target="_blank">$identifier</a><br/>
+#else
+#end
+#end
+</div>
+
 #if($doc.getFieldValue('entity_ss'))
   <h3>Recognized named entities:</h3>
 #foreach ( $entity in $doc.getFieldValue('entity_ss') )
