@@ -4,9 +4,9 @@
 
 #parse('doc_shortcuts.vm')
 
-<div id="doc-thumb-box" class="small-3 large-3 columns">
-  <a href="$urlItem"><img src="$urlThumbnail" height="100" width="100" align="center"></a>
-</div>
+### TODO: PUT BACK<div id="doc-thumb-box" class="small-3 large-3 columns">
+###  <a href="$urlItem"><img src="$urlThumbnail" height="100" width="100" align="center"></a>
+###</div>
 <div id="doc-view" class="small-3 large-6 columns">
 <div class="doc-title">
   ## Title, hyperlinked
@@ -99,10 +99,11 @@ $publisher<br/>
       #foreach($mltHit in $mlt)
         #set($mltId = $mltHit.getFieldValue('id'))
         <div class="row mlt">
-          <div style="float:left">
-            <a href="#{url_for_view}?q=id:$mltId">
-              <img src="$mltHit.getFieldValue('url_thumbnail')" alt="$mltId"/></a>
-          </div>
+###          <div style="float:left">
+###            <a href="#{url_for_view}?q=id:$mltId">
+###### TODO: PUTBACK              <img src="$mltHit.getFieldValue('url_thumbnail')" alt="$mltId"/>
+###            </a>
+###          </div>
           <div>
             <a class="mlt-title-link" href="#{url_for_view}?q=id:$mltId">
             $mltHit.getFieldValue('title').get(0)
