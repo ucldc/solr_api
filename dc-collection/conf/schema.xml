@@ -156,11 +156,17 @@
 
    <!-- non-tokenized versions of terms to for sorting and/or facets -->
    <!--TODO: Storing during development for debug help -->
+   <!-- campus will store URL to the registry api campus object -->
    <field name="campus" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!-- Name so that clients don't need to lookup against registry api -->
    <field name="campus_name" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!-- collection will store URL to the registry api collection object -->
    <field name="collection" type="string" indexed="true" stored="true" />
+   <!-- Name so that clients don't need to lookup against registry api -->
    <field name="collection_name" type="string" indexed="true" stored="true" />
+   <!-- repository will store URL to the registry api repository object -->
    <field name="repository" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!-- Name so that clients don't need to lookup against registry api -->
    <field name="repository_name" type="string" indexed="true" stored="true" multiValued="true"/>
 
      <!-- treat dates as string or date ? -->
@@ -283,6 +289,7 @@
    <!--    top-level object properties -->
    <copyField source="id" dest="text"/>
    <!-- copy datetime fields to string variants for wildcard searching -->
+   <!-- TODO: copy to text for full text search -->
    <copyField source="created" dest="created_s"/>
    <copyField source="last_modified" dest="last_modified_s"/>
    <!--   all DC fields -->
