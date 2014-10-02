@@ -185,6 +185,7 @@
    <field name="creator" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="date" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="description" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="extent" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="format" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="identifier" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="language" type="text_general" indexed="true" stored="true" multiValued="true"/>
@@ -305,6 +306,7 @@
    <copyField source="coverage" dest="text"/>
    <copyField source="date" dest="text"/>
    <copyField source="description" dest="text"/>
+   <copyField source="extent" dest="text"/>
    <copyField source="format" dest="text"/>
    <copyField source="identifier" dest="text"/>
    <copyField source="language" dest="text"/>
@@ -323,6 +325,7 @@
    <copyField source="creator" dest="creator_ss"/> 
    <copyField source="date" dest="date_ss"/> 
    <copyField source="description" dest="description_ss"/> 
+   <copyField source="extent" dest="extent_ss"/> 
    <copyField source="format" dest="format_ss"/> 
    <copyField source="identifier" dest="identifier_ss"/> 
    <copyField source="language" dest="language_ss"/> 
