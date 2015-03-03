@@ -157,20 +157,28 @@
    <!-- non-tokenized versions of terms to for sorting and/or facets -->
    <!--TODO: Storing during development for debug help -->
    <!-- campus will store URL to the registry api campus object -->
-   <field name="campus" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="campus_url" type="string" indexed="true" stored="true" multiValued="true"/>
    <!-- Name so that clients don't need to lookup against registry api -->
    <field name="campus_name" type="string" indexed="true" stored="true" multiValued="true"/>
-   <!-- collection will store URL to the registry api collection object -->
-   <field name="collection" type="string" indexed="true" stored="true" multiValued="true" required="true"/>
+   <!-- Concatted <name>::<url> -->
+   <field name="campus_data" type="string" stored="true" multiValued="true"/>
+   <!-- collection_url will store URL to the registry api collection object -->
+   <field name="collection_url" type="string" indexed="true" stored="true" multiValued="true" required="true"/>
    <!-- Name so that clients don't need to lookup against registry api -->
    <field name="collection_name" type="string" indexed="true" stored="true" multiValued="true" required="true"/>
+   <!-- Collection name & url concatenated with "::" for ease of user -->
+   <field name="collection_data" type="string" stored="true" multiValued="true" required="true"/>
    <!-- repository will store URL to the registry api repository object -->
-   <field name="repository" type="string" indexed="true" stored="true" multiValued="true"/>
-   <!-- Name so that clients don't need to lookup against registry api -->
+   <field name="repository_url" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!-- Name so that clients don't need to lookup against registry api 
+        This is the <repo_name>::<campus_name> 
+        if no campus, just <repo_name> -->
    <field name="repository_name" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!-- Data for repo, it is <repo_name>::<repo_url>::<campus_name>
+        if no campus, just <repo_name>::<repo_url> -->
+   <field name="repository_data" type="string" stored="true" multiValued="true"/>
 
-     <!-- treat dates as string or date ? -->
-   <!-- TODO: get these from OAI -->
+   <!-- treat dates as string or date ? -->
    <field name="created" type="date" indexed="true" stored="true"/> 
    <field name="last_modified" type="date" indexed="true" stored="true" /> 
 
