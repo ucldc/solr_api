@@ -203,7 +203,9 @@
    <field name="source" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="subject" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="type" type="text_general" indexed="true" stored="true" multiValued="true"/>
-   <field name="date_facet" type="date" indexed="true" stored="true" multiValued="true"/>
+   <!--   <field name="date_facet" type="date" indexed="true" stored="true" multiValued="true"/>
+          -->
+   <field name="facet_decade" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <!-- will point to extracted thumbnail eventually -->
    <!-- TODO: indexed so I can search for items with it filled in -->
@@ -324,6 +326,7 @@
    <copyField source="source" dest="text"/>
    <copyField source="subject" dest="text"/>
    <copyField source="type" dest="text"/>
+   <copyField source="facet_decade" dest="text"/>
 
    <!-- copy text fields into string fields for faceting -->
    <!-- Create a string version dc fields for faceting -->
