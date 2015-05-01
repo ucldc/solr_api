@@ -23,12 +23,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   cp -rp /opt/solr/server/solr/configsets/basic_configs/conf /opt/solr/server/solr/dc-collection/ 
 
 
-#RUN  aws s3 cp s3://solr.ucldc/2015/04/solr-index.2015-04-22-19_45_07.tar.bz2 /opt/solr/
-COPY solr-index.2015-04-22-19_45_07.tar.bz2 /opt/solr/server/solr/dc-collection/data/ 
-WORKDIR /opt/solr/server/solr/dc-collection/data/ 
-RUN tar -xvf solr-index.2015-04-22-19_45_07.tar.bz2 --strip-components=4 && \
-  rm solr-index.*bz2 && \
-  chown -R $SOLR_USER:$SOLR_USER /opt/solr /opt/$SOLR 
+###WORKDIR /opt/solr/server/solr/dc-collection/data/ 
+###RUN  aws s3 cp s3://solr.ucldc/2015/04/solr-index.2015-04-22-19_45_07.tar.bz2 /opt/solr/dc-collection/data/ && \
+###  tar -xvf solr-index.2015-04-22-19_45_07.tar.bz2 --strip-components=4 && \
+###  rm solr-index.*bz2 && \
+###  chown -R $SOLR_USER:$SOLR_USER /opt/solr /opt/$SOLR 
 
 
 # NOW COPY SCHEMA AND SUCH TO directory
