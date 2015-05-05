@@ -42,9 +42,12 @@ if [[ env_exists -ne 1 ]]
     usage    
 fi
 
+rm -f $ZIP
 # package app and upload
-zip $ZIP -r dc-collection/ .ebextensions/ Dockerfile Dockerrun.aws.json \
+zip $ZIP -r dc-collection/ .ebextensions/ \
+    Dockerfile Dockerrun.aws.json \
     solr-5.1.0.tgz
+
 set -x
 aws --region $REGION s3 cp $ZIP "s3://$BUCKET/$DIR/$ZIP"
 
