@@ -252,24 +252,8 @@
    <!-- TODO: copy to text for full text search -->
    <copyField source="created" dest="created_s"/>
    <copyField source="last_modified" dest="last_modified_s"/>
-   <!--   all DC fields -->
-   <copyField source="title" dest="text"/>
-   <copyField source="contributor" dest="text"/>
-   <copyField source="creator" dest="text"/>
-   <copyField source="coverage" dest="text"/>
-   <copyField source="date" dest="text"/>
-   <copyField source="description" dest="text"/>
-   <copyField source="extent" dest="text"/>
-   <copyField source="format" dest="text"/>
-   <copyField source="identifier" dest="text"/>
-   <copyField source="language" dest="text"/>
-   <copyField source="publisher" dest="text"/>
-   <copyField source="relation" dest="text"/>
-   <copyField source="rights" dest="text"/>
-   <copyField source="source" dest="text"/>
-   <copyField source="subject" dest="text"/>
-   <copyField source="type" dest="text"/>
-   <copyField source="facet_decade" dest="text"/>
+   <!--   all fields -->
+   <copyField source="*" dest="text"/>
 
    <!-- copy text fields into string fields for faceting -->
    <!-- Create a string version dc fields for faceting -->
