@@ -164,6 +164,7 @@
 
    <!-- Dublin Core fields -->
    <field name="title" type="text_general" indexed="true" stored="true" required="true" multiValued="true"/>
+   <field name="alternative_title" type="text_general" indexed="true" stored="true" required="true" multiValued="true"/>
    <field name="contributor" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="coverage" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="creator" type="text_general" indexed="true" stored="true" multiValued="true"/>
@@ -171,13 +172,21 @@
    <field name="description" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="extent" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="format" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="genre" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="identifier" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="language" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="location" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="provenance" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="publisher" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="relation" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="rights" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="rights_holder" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="rights_note" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="rights_date" type="text_general" indexed="true" stored="true"/>
    <field name="source" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="subject" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="temporal" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="transcription" type="text_general" indexed="true" stored="true"/>
    <field name="type" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <!-- lowercase for consistency -->
    <!-- remove an uppercase for facet -->
@@ -194,6 +203,8 @@
         sized images.
         For now you can use md5s3stash to calculate url to image -->
    <field name="reference_image_md5" type="string" stored="true"/>
+   <field name="dimensions" type="string" stored="true"/>
+
 
 
    <!-- Dynamic field definitions allow using convention over configuration
@@ -266,6 +277,7 @@
 
    <!-- Create a string version dc fields for faceting -->
    <copyField source="title" dest="title_ss"/> 
+   <copyField source="alternative_title" dest="alternative_title_ss"/> 
    <copyField source="contributor" dest="contributor_ss"/> 
    <copyField source="coverage" dest="coverage_ss"/> 
    <copyField source="creator" dest="creator_ss"/> 
@@ -273,13 +285,20 @@
    <copyField source="description" dest="description_ss"/> 
    <copyField source="extent" dest="extent_ss"/> 
    <copyField source="format" dest="format_ss"/> 
+   <copyField source="genre" dest="genre_ss"/> 
    <copyField source="identifier" dest="identifier_ss"/> 
    <copyField source="language" dest="language_ss"/> 
+   <copyField source="location" dest="location_ss"/> 
    <copyField source="publisher" dest="publisher_ss"/> 
    <copyField source="relation" dest="relation_ss"/> 
    <copyField source="rights" dest="rights_ss"/> 
+   <copyField source="rights_holder" dest="rights_holder_ss"/> 
+   <copyField source="rights_note" dest="rights_note_ss"/> 
+   <copyField source="rights_date" dest="rights_date_s"/> 
    <copyField source="source" dest="source_ss"/> 
    <copyField source="subject" dest="subject_ss"/> 
+   <copyField source="temporal" dest="temporal_ss"/> 
+   <copyField source="transcription" dest="transcription_s"/> 
    <copyField source="type" dest="type_ss"/> 
 	
    <copyField source="*" dest="text_rev"/> 
