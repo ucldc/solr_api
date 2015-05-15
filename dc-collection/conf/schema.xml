@@ -120,6 +120,14 @@
 <!-- TODO: DO i need to do something here?-->
    <field name="text_rev" type="text_general_rev" indexed="true" stored="false" multiValued="true"/>
 
+   <field name="text_en_split" type="text_en_splitting" indexed="true" stored="false" multiValued="true"/>
+
+   <field name="text_english" type="text_en" indexed="true" stored="false" multiValued="true"/>
+
+   <field name="text_commongrams" type="testcommongrams" indexed="true" stored="false" multiValued="true"/>
+
+   <field name="text_ngrams" type="testngram" indexed="true" stored="false" multiValued="true"/>
+
 <!-- timestamp on Solr document -->
 <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" />
 
@@ -172,6 +180,7 @@
    <field name="subject" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="type" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <!-- lowercase for consistency -->
+   <!-- remove an uppercase for facet -->
    <field name="type_ss" type="lowercase" indexed="true" stored="true" multiValued="true"/>
    <!--   <field name="date_facet" type="date" indexed="true" stored="true" multiValued="true"/>
           -->
@@ -255,7 +264,6 @@
    <!--   all fields -->
    <copyField source="*" dest="text"/>
 
-   <!-- copy text fields into string fields for faceting -->
    <!-- Create a string version dc fields for faceting -->
    <copyField source="title" dest="title_ss"/> 
    <copyField source="contributor" dest="contributor_ss"/> 
@@ -274,6 +282,12 @@
    <copyField source="subject" dest="subject_ss"/> 
    <copyField source="type" dest="type_ss"/> 
 	
+   <copyField source="*" dest="text_rev"/> 
+   <copyField source="*" dest="text_en_split"/> 
+   <copyField source="*" dest="text_english"/> 
+   <copyField source="*" dest="text_commongrams"/>
+   <copyField source="*" dest="text_ngrams"/>
+
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
        attribute and any other attributes determine the real
@@ -524,6 +538,20 @@
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
     </fieldType>
+
+    <fieldtype name="testcommongrams" class="solr.TextField">
+       <analyzer>
+         <tokenizer class="solr.LowerCaseTokenizerFactory"/>
+         <filter class="solr.CommonGramsFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+       </analyzer>
+    </fieldtype>
+
+    <fieldtype name="testngram" class="solr.TextField">
+       <analyzer>
+         <tokenizer class="solr.LowerCaseTokenizerFactory"/>
+        <filter class="solr.NGramFilterFactory" minGramSize="2" maxGramSize="6" />
+       </analyzer>
+    </fieldtype>
 
     <!-- Just like text_general except it reverses the characters of
 	 each token, to enable more efficient leading wildcard queries. -->
