@@ -140,7 +140,7 @@
     -->
 
   <!-- The default high-performance update handler -->
-  <updateHandler class="solr.DirectUpdateHandler2">
+  <updateHandler class="solr.DirectUpdateHandler2" enable="false">
 
     <!-- Enables a transaction log, used for real-time get, durability, and
          and solr cloud replica recovery.  The log can grow as big as
@@ -417,7 +417,7 @@
        of SearchComponents (see below) and supports distributed
        queries across multiple shards
     -->
-  <requestHandler name="/select" class="solr.SearchHandler">
+  <requestHandler name="/select" class="solr.SearchHandler" enable="false">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
@@ -444,7 +444,7 @@
     The export request handler is used to export full sorted result sets.
     Do not change these defaults.
   -->
-  <requestHandler name="/export" class="solr.SearchHandler">
+  <requestHandler name="/export" class="solr.SearchHandler" enable="false">
     <lst name="invariants">
       <str name="rq">{!xport}</str>
       <str name="wt">xsort</str>
@@ -481,7 +481,7 @@
            field value analysis will be marked as "matched" for every
            token that is produces by the query analysis
    -->
-  <requestHandler name="/analysis/field" 
+  <requestHandler name="/analysis/field"  enable="false"
                   startup="lazy"
                   class="solr.FieldAnalysisRequestHandler" />
 
@@ -516,12 +516,12 @@
     true, all field tokens that match the query tokens will be marked
     as a "match". 
   -->
-  <requestHandler name="/analysis/document" 
+  <requestHandler name="/analysis/document"  enable="false"
                   class="solr.DocumentAnalysisRequestHandler" 
                   startup="lazy" />
 
   <!-- Echo the request contents back to the client -->
-  <requestHandler name="/debug/dump" class="solr.DumpRequestHandler" >
+  <requestHandler name="/debug/dump" class="solr.DumpRequestHandler" enable="false">
     <lst name="defaults">
      <str name="echoParams">explicit</str> 
      <str name="echoHandler">true</str>
