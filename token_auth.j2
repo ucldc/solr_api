@@ -1,0 +1,9 @@
+set $not_authed  1;
+{% for token in tokens %}
+if ($http_x_api_key = "{{ token }}") {
+    set $not_authed 0;
+}
+{% endfor %}
+if ($not_authed) {
+    return 403;
+}
