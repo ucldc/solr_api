@@ -205,7 +205,12 @@
    <field name="reference_image_md5" type="string" stored="true"/>
    <field name="dimensions" type="string" stored="true"/>
 
+   <field name="structmap_text" type="text_general" indexed="true" stored="false"/>
+   <field name="structmap_url" type="string" indexed="true" stored="true"/>
 
+   <!-- copyField won't work, need to explicitly set sort_title from
+        title[0] in src doc -->
+   <field name="sort_title" type="string" indexed="false" stored="true"/>
 
    <!-- Dynamic field definitions allow using convention over configuration
        for fields via the specification of patterns to match field names. 
