@@ -6,13 +6,14 @@ ENV SOLR_VERSION 5.1.0
 ENV SOLR solr-$SOLR_VERSION
 ENV SOLR_USER solr
 
-COPY $SOLR.tgz /opt/
+#COPY $SOLR.tgz /opt/ #if downloaded, may want to do before hand, takes long
+#time to download
 WORKDIR /opt/
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
   apt-get -y install bzip2 awscli &&\
-#THIS TAKES TOO LONG  wget -nv --output-document=/usr/local/src/$SOLR.tgz http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz && \
+  wget -nv --output-document=/usr/local/src/$SOLR.tgz http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz && \ #takes long time
   tar -xvf $SOLR.tgz && \
   groupadd -r $SOLR_USER && \
   useradd -r -g $SOLR_USER $SOLR_USER && \
