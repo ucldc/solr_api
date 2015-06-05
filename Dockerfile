@@ -13,7 +13,7 @@ WORKDIR /opt/
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
   apt-get -y install bzip2 awscli &&\
-  wget -nv --output-document=/opt/$SOLR.tgz http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz && \ #takes long time
+  wget -nv --output-document=/opt/$SOLR.tgz http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz && \ 
   tar -xvf $SOLR.tgz && \
   groupadd -r $SOLR_USER && \
   useradd -r -g $SOLR_USER $SOLR_USER && \
