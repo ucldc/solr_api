@@ -23,6 +23,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   mkdir -p /opt/solr/server/solr/dc-collection/data && \
   mkdir -p /opt/solr/server/solr/dc-collection/data/tlog && \
   cp -rp /opt/solr/server/solr/configsets/basic_configs/conf /opt/solr/server/solr/dc-collection/ && \
+  touch /opt/solr/server/solr/dc-collection/conf/admin-extra.html && \
+  touch /opt/solr/server/solr/dc-collection/conf/admin-extra.menu-top.html && \
+  touch /opt/solr/server/solr/dc-collection/conf/admin-extra.menu-bottom.html && \
   chown -R $SOLR_USER:$SOLR_USER /opt/solr /opt/$SOLR 
 
 
