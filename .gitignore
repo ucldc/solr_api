@@ -1,2 +1,4 @@
 .sass-cache
 dc-collection/conf/velocity/stylesheets/*.css
+#ignore eb local files
+.elasticbeanstalk/*
