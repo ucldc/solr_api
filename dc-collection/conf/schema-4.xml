@@ -219,6 +219,15 @@
         sized images.
         For now you can use md5s3stash to calculate url to image -->
    <field name="reference_image_md5" type="string" stored="true"/>
+   <field name="dimensions" type="string" stored="true"/>
+
+   <field name="structmap_text" type="text_general" indexed="true" stored="false"/>
+   <field name="structmap_url" type="string" indexed="true" stored="true"/>
+
+   <!-- copyField won't work, need to explicitly set sort_title from
+        title[0] in src doc -->
+   <field name="sort_title" type="string" indexed="false" stored="true"/>
+
 
    <field name="payloads" type="payloads" indexed="true" stored="true"/>
 
@@ -309,6 +318,14 @@
    <!-- TODO: copy to text for full text search -->
    <copyField source="created" dest="created_s"/>
    <copyField source="last_modified" dest="last_modified_s"/>
+   <!--   all fields -->
+   <copyField source="*" dest="text"/>
+   <copyField source="*" dest="text_rev"/> 
+   <copyField source="*" dest="text_en_split"/> 
+   <copyField source="*" dest="text_english"/> 
+   <copyField source="*" dest="text_commongrams"/>
+   <copyField source="*" dest="text_ngrams"/>
+
    <!--   all DC fields -->
    <copyField source="title" dest="text"/>
    <copyField source="contributor" dest="text"/>
