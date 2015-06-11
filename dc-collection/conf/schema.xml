@@ -164,7 +164,7 @@
 
    <!-- Dublin Core fields -->
    <field name="title" type="text_general" indexed="true" stored="true" required="true" multiValued="true"/>
-   <field name="alternative_title" type="text_general" indexed="true" stored="true" required="true" multiValued="true"/>
+   <field name="alternative_title" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="contributor" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="coverage" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="creator" type="text_general" indexed="true" stored="true" multiValued="true"/>
@@ -279,6 +279,12 @@
    <copyField source="last_modified" dest="last_modified_s"/>
    <!--   all fields -->
    <copyField source="*" dest="text"/>
+   <copyField source="*" dest="text_rev"/> 
+   <copyField source="*" dest="text_en_split"/> 
+   <copyField source="*" dest="text_english"/> 
+   <copyField source="*" dest="text_commongrams"/>
+   <copyField source="*" dest="text_ngrams"/>
+
 
    <!-- Create a string version dc fields for faceting -->
    <copyField source="title" dest="title_ss"/> 
@@ -306,12 +312,6 @@
    <copyField source="transcription" dest="transcription_s"/> 
    <copyField source="type" dest="type_ss"/> 
 	
-   <copyField source="*" dest="text_rev"/> 
-   <copyField source="*" dest="text_en_split"/> 
-   <copyField source="*" dest="text_english"/> 
-   <copyField source="*" dest="text_commongrams"/>
-   <copyField source="*" dest="text_ngrams"/>
-
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
        attribute and any other attributes determine the real
