@@ -164,7 +164,7 @@
 
    <!-- Dublin Core fields -->
    <field name="title" type="text_general" indexed="true" stored="true" required="true" multiValued="true"/>
-   <field name="alternative_title" type="text_general" indexed="true" stored="true" required="true" multiValued="true"/>
+   <field name="alternative_title" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="contributor" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="coverage" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="creator" type="text_general" indexed="true" stored="true" multiValued="true"/>
