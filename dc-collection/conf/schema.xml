@@ -210,7 +210,7 @@
 
    <!-- copyField won't work, need to explicitly set sort_title from
         title[0] in src doc -->
-   <field name="sort_title" type="string" indexed="false" stored="true"/>
+   <field name="sort_title" type="string" indexed="true" stored="true"/>
 
    <!-- Dynamic field definitions allow using convention over configuration
        for fields via the specification of patterns to match field names. 

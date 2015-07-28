@@ -24,7 +24,7 @@ fi
 
 set -u
 
-ZIP=ucldc-solr-ebs.zip
+ZIP="ucldc-solr-ebs-$1.zip"
 DIR=ucldc-solr-beanstalk
 BUCKET=solr.ucldc
 REGION=us-west-2
