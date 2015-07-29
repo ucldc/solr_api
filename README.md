@@ -46,4 +46,4 @@ Then ssh to the majorTom machine.
 - from the solr_api directory, run deploy-version.sh. This will prompt you for
   required parameters. Set the new cloned environment to be the one updated and
   give the version an appropriate name.
-- ./deploy-version.sh --version-label=add-start-end-date --environment-name=ucldc-solr-stage-2
+- ./deploy-version.sh add-start-end-date ucldc-solr-stage-2
