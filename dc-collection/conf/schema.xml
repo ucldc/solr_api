@@ -111,6 +111,9 @@
    -->   
    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
 
+   <!-- hold the backend ingest ID here. For now it is the couchdb id -->
+   <field name="harvest_id_s" type="string" indexed="true" stored="true" required="false" multiValued="false" /> 
+
    <!-- catchall field, containing all other searchable text fields (implemented
         via copyField further on in this schema  -->
    <field name="text" type="text_general" indexed="true" stored="false" multiValued="true"/>
@@ -144,6 +147,8 @@
    <field name="collection_name" type="string" indexed="true" stored="true" multiValued="true" required="true"/>
    <!-- Collection name & url concatenated with "::" for ease of user -->
    <field name="collection_data" type="string" stored="true" multiValued="true" required="true"/>
+   <!-- collection data with a normalized collection name for sorting -->
+   <field name="sort_collection_data" type="string" stored="true" multiValued="true" required="true"/>
    <!-- repository will store URL to the registry api repository object -->
    <field name="repository_url" type="string" indexed="true" stored="true" multiValued="true"/>
    <!-- Name so that clients don't need to lookup against registry api 
@@ -193,6 +198,8 @@
    <field name="type_ss" type="lowercase" indexed="true" stored="true" multiValued="true"/>
    <!--   <field name="date_facet" type="date" indexed="true" stored="true" multiValued="true"/>
           -->
+   <field name="sort_date_start" type="date" indexed="true" stored="true" multiValued="False"/>
+   <field name="sort_date_end" type="date" indexed="true" stored="true" multiValued="False"/>
    <field name="facet_decade" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <!-- best guess at home url for the item.  -->
@@ -210,7 +217,7 @@
 
    <!-- copyField won't work, need to explicitly set sort_title from
         title[0] in src doc -->
-   <field name="sort_title" type="string" indexed="true" stored="true"/>
+   <field name="sort_title" type="alphaSpaceSort" indexed="true" stored="true"/>
 
    <!-- Dynamic field definitions allow using convention over configuration
        for fields via the specification of patterns to match field names. 
@@ -624,6 +631,35 @@
           -->
         <filter class="solr.PatternReplaceFilterFactory"
                 pattern="([^a-z])" replacement="" replace="all"
+        />
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="alphaSpaceSort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+      <analyzer>
+        <!-- KeywordTokenizer does no actual tokenizing, so the entire
+             input string is preserved as a single token
+          -->
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <!-- The LowerCase TokenFilter does what you expect, which can be
+             when you want your sorting to be case insensitive
+          -->
+        <filter class="solr.LowerCaseFilterFactory" />
+        <!-- The TrimFilter removes any leading or trailing whitespace -->
+        <filter class="solr.TrimFilterFactory" />
+        <!-- The PatternReplaceFilter gives you the flexibility to use
+             Java Regular expression to replace any sequence of characters
+             matching a pattern with an arbitrary replacement string, 
+             which may include back references to portions of the original
+             string matched by the pattern.
+             
+             See the Java Regular Expression documentation for more
+             information on pattern and replacement string syntax.
+             
+             http://docs.oracle.com/javase/7/docs/api/java/util/regex/package-summary.html
+          -->
+        <filter class="solr.PatternReplaceFilterFactory"
+                pattern="([^a-z\s])" replacement="" replace="all"
         />
       </analyzer>
     </fieldType>
