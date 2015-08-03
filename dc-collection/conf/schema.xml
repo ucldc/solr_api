@@ -198,8 +198,8 @@
    <field name="type_ss" type="lowercase" indexed="true" stored="true" multiValued="true"/>
    <!--   <field name="date_facet" type="date" indexed="true" stored="true" multiValued="true"/>
           -->
-   <field name="sort_date_start" type="date" indexed="true" stored="true" multiValued="False"/>
-   <field name="sort_date_end" type="date" indexed="true" stored="true" multiValued="False"/>
+   <field name="sort_date_start" type="date" indexed="true" stored="true" multiValued="false" sortMissingLast="true"/>
+   <field name="sort_date_end" type="date" indexed="true" stored="true" multiValued="false" sortMissingLast="true"/>
    <field name="facet_decade" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <!-- best guess at home url for the item.  -->
