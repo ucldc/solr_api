@@ -1,0 +1,10 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Volumes": [
+    {
+      "HostDirectory": "/var/app/solr-index",
+      "ContainerDirectory": "/opt/solr/server/solr/dc-collection/data"
+    }
+  ]
+}
+
