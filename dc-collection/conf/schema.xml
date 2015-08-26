@@ -210,7 +210,7 @@
         sized images.
         For now you can use md5s3stash to calculate url to image -->
    <field name="reference_image_md5" type="string" stored="true"/>
-   <field name="dimensions" type="string" stored="true"/>
+   <field name="reference_image_dimensions" type="string" stored="true"/>
 
    <field name="structmap_text" type="text_general" indexed="true" stored="false"/>
    <field name="structmap_url" type="string" indexed="true" stored="true"/>
