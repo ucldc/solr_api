@@ -454,7 +454,7 @@
 	 removes stop words from case-insensitive "stopwords.txt"
 	 (empty by default), and down cases.  At query time only, it
 	 also applies synonyms. -->
-    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="text_general_original" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
@@ -469,6 +469,20 @@
         <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
+    </fieldType>
+
+    <!-- a text field with stemming and dicritics folding
+    -->
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <fieldType name="text" class="solr.TextField">
+        <analyzer>
+          <tokenizer class="solr.StandardTokenizerFactory"/>
+          <filter class="solr.StandardFilterFactory"/>
+          <filter class="solr.LowerCaseFilterFactory"/>
+          <filter class="solr.EnglishPorterFilterFactory"/>
+          <filter class="solr.ASCIIFoldingFilterFactory"/>
+        </analyzer>
+      </fieldType>
     </fieldType>
 
     <!-- A text field with defaults appropriate for English: it
