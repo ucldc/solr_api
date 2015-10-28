@@ -474,15 +474,13 @@
     <!-- a text field with stemming and dicritics folding
     -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
-      <fieldType name="text" class="solr.TextField">
-        <analyzer>
-          <tokenizer class="solr.StandardTokenizerFactory"/>
-          <filter class="solr.StandardFilterFactory"/>
-          <filter class="solr.LowerCaseFilterFactory"/>
-          <filter class="solr.EnglishPorterFilterFactory"/>
-          <filter class="solr.ASCIIFoldingFilterFactory"/>
-        </analyzer>
-      </fieldType>
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EnglishPorterFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
     </fieldType>
 
     <!-- A text field with defaults appropriate for English: it
