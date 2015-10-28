@@ -478,7 +478,7 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
-        <filter class="solr.EnglishPorterFilterFactory"/>
+        <filter class="solr.PorterStemFilterFactory"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
       </analyzer>
     </fieldType>
