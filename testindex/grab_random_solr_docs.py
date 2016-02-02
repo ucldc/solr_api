@@ -5,7 +5,7 @@ import datetime
 
 SOLR_NEW = solr.Solr('http://127.0.0.1:8983/solr/dc-collection')
 SOLR=solr.SearchHandler(solr.Solr('https://registry.cdlib.org/solr',
-post_headers = { 'X-Authentication-Token':'xxxyyyzzz'}), "/query")
+post_headers = { 'X-Authentication-Token':''}), "/query")
 
 def get_collection_urls():
     q_collections=SOLR(q="*:*", rows=0, facet_field="collection_url", 
