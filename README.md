@@ -47,3 +47,9 @@ Then ssh to the majorTom machine.
   required parameters. Set the new cloned environment to be the one updated and
   give the version an appropriate name.
 - ./deploy-version.sh add-start-end-date ucldc-solr-stage-2
+
+### Creating a new api key
+- Generate a new API key, see scripts/generate_api_key.py, though any string will work
+- Download token_auth file from S3 solr.ucldc
+- Add the API key to the file & upload
+- Clone & rebuild the solr environments to grab the new key
