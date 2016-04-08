@@ -300,7 +300,6 @@
    <copyField source="coverage" dest="coverage_ss"/> 
    <copyField source="creator" dest="creator_ss"/> 
    <copyField source="date" dest="date_ss"/> 
-   <copyField source="description" dest="description_ss"/> 
    <copyField source="extent" dest="extent_ss"/> 
    <copyField source="format" dest="format_ss"/> 
    <copyField source="genre" dest="genre_ss"/> 
@@ -316,7 +315,6 @@
    <copyField source="source" dest="source_ss"/> 
    <copyField source="subject" dest="subject_ss"/> 
    <copyField source="temporal" dest="temporal_ss"/> 
-   <copyField source="transcription" dest="transcription_s"/> 
    <copyField source="type" dest="type_ss"/> 
 	
     <!-- field type definitions. The "name" attribute is
