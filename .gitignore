@@ -2,3 +2,5 @@
 dc-collection/conf/velocity/stylesheets/*.css
 #ignore eb local files
 .elasticbeanstalk/*
+solr-5.*
+solr-6.*
