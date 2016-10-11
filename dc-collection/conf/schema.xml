@@ -131,6 +131,8 @@
 
    <field name="text_ngrams" type="testngram" indexed="true" stored="false" multiValued="true"/>
 
+   <field name="text_spell" type="text_general_original" indexed="true" stored="true" multiValued="true"/>
+
 <!-- timestamp on Solr document -->
 <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" />
 
@@ -291,6 +293,7 @@
    <copyField source="*" dest="text_english"/> 
    <copyField source="*" dest="text_commongrams"/>
    <copyField source="*" dest="text_ngrams"/>
+   <copyField source="*" dest="text_spell"/>
 
 
    <!-- Create a string version dc fields for faceting -->
