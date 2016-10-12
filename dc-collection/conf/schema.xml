@@ -131,7 +131,7 @@
 
    <field name="text_ngrams" type="testngram" indexed="true" stored="false" multiValued="true"/>
 
-   <field name="text_spell" type="text_general_original" indexed="true" stored="true" multiValued="true"/>
+   <field name="text_spell" type="text_spell" indexed="true" stored="false" multiValued="true"/>
 
 <!-- timestamp on Solr document -->
 <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" />
@@ -293,8 +293,6 @@
    <copyField source="*" dest="text_english"/> 
    <copyField source="*" dest="text_commongrams"/>
    <copyField source="*" dest="text_ngrams"/>
-   <copyField source="*" dest="text_spell"/>
-
 
    <!-- Create a string version dc fields for faceting -->
    <copyField source="title" dest="title_ss"/> 
@@ -320,6 +318,33 @@
    <copyField source="temporal" dest="temporal_ss"/> 
    <copyField source="type" dest="type_ss"/> 
 	
+
+   <copyField source="campus_name" dest="text_spell"/> 
+   <copyField source="repository_name" dest="text_spell"/> 
+   <copyField source="collection_name" dest="text_spell"/> 
+   <copyField source="title" dest="text_spell"/> 
+   <copyField source="alternative_title" dest="text_spell"/> 
+   <copyField source="contributor" dest="text_spell"/> 
+   <copyField source="coverage" dest="text_spell"/> 
+   <copyField source="creator" dest="text_spell"/> 
+   <copyField source="date" dest="text_spell"/> 
+   <copyField source="extent" dest="text_spell"/> 
+   <copyField source="format" dest="text_spell"/> 
+   <copyField source="genre" dest="text_spell"/> 
+   <copyField source="identifier" dest="text_spell"/> 
+   <copyField source="language" dest="text_spell"/> 
+   <copyField source="location" dest="text_spell"/> 
+   <copyField source="publisher" dest="text_spell"/> 
+   <copyField source="relation" dest="text_spell"/> 
+   <copyField source="rights" dest="text_spell"/> 
+   <copyField source="rights_holder" dest="text_spell"/> 
+   <copyField source="rights_note" dest="text_spell"/> 
+   <copyField source="rights_date" dest="text_spell"/> 
+   <copyField source="source" dest="text_spell"/> 
+   <copyField source="subject" dest="text_spell"/> 
+   <copyField source="temporal" dest="text_spell"/> 
+   <copyField source="type" dest="text_spell"/> 
+
     <!-- field type definitions. The "name" attribute is
        just a label to be used by field definitions.  The "class"
        attribute and any other attributes determine the real
@@ -481,6 +506,20 @@
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.PorterStemFilterFactory"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <fieldType name="text_spell" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+		<filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt" />
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+		<filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt" />
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
 
