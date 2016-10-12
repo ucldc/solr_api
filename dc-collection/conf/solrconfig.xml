@@ -426,15 +426,15 @@
        <int name="rows">10</int>
        <str name="q.op">AND</str>
 	   <str name="spellcheck.dictionary">default</str>
-	   <!--<str name="spellcheck">on</str>-->
-      <str name="spellcheck.extendedResults">true</str>       
-      <str name="spellcheck.count">10</str>
-      <str name="spellcheck.alternativeTermCount">5</str>
-      <str name="spellcheck.maxResultsForSuggest">5</str>       
-      <str name="spellcheck.collate">true</str>
-	  <str name="spellcheck.collateExtendedResults">true</str>
-      <str name="spellcheck.maxCollationTries">10</str>
-      <str name="spellcheck.maxCollations">5</str>
+	   <str name="spellcheck.dictionary">wordbreak</str>
+       <str name="spellcheck.extendedResults">true</str>       
+       <str name="spellcheck.count">20</str>
+       <str name="spellcheck.alternativeTermCount">5</str>
+       <str name="spellcheck.maxResultsForSuggest">5</str>       
+       <str name="spellcheck.collate">true</str>
+ 	   <str name="spellcheck.collateExtendedResults">true</str>
+       <str name="spellcheck.maxCollationTries">10</str>
+       <str name="spellcheck.maxCollations">5</str>
      </lst>
      <arr name="last-components">
        <str>spellcheck</str>
@@ -451,15 +451,15 @@
        <str name="defType">edismax</str>
        <str name="q.alt">*:*</str>
 	   <str name="spellcheck.dictionary">default</str>
-	   <!--<str name="spellcheck">on</str>-->
-      <str name="spellcheck.extendedResults">true</str>       
-      <str name="spellcheck.count">10</str>
-      <str name="spellcheck.alternativeTermCount">5</str>
-      <str name="spellcheck.maxResultsForSuggest">5</str>       
-      <str name="spellcheck.collate">true</str>
-	  <str name="spellcheck.collateExtendedResults">true</str>
-      <str name="spellcheck.maxCollationTries">10</str>
-      <str name="spellcheck.maxCollations">5</str>
+	   <str name="spellcheck.dictionary">wordbreak</str>
+       <str name="spellcheck.extendedResults">true</str>       
+       <str name="spellcheck.count">20</str>
+       <str name="spellcheck.alternativeTermCount">5</str>
+       <str name="spellcheck.maxResultsForSuggest">5</str>       
+       <str name="spellcheck.collate">true</str>
+       <str name="spellcheck.collateExtendedResults">true</str>
+       <str name="spellcheck.maxCollationTries">10</str>
+       <str name="spellcheck.maxCollations">5</str>
        <!--<str name="pf">text^2.0</str> play with this param for phrases -->
      </lst>
      <arr name="last-components">
@@ -575,21 +575,29 @@
        
      -->
 
-<searchComponent name="spellcheck" class="solr.SpellCheckComponent">
-  <lst name="spellchecker">
-    <str name="name">default</str>
-    <str name="field">text_spell</str>
-    <str name="classname">solr.DirectSolrSpellChecker</str>
-    <str name="distanceMeasure">internal</str>
-    <float name="accuracy">0.5</float>
-    <int name="maxEdits">2</int>
-    <int name="minPrefix">1</int>
-    <int name="maxInspections">5</int>
-    <int name="minQueryLength">3</int>
-    <float name="maxQueryFrequency">10</float>
-    <float name="thresholdTokenerequency">1</float>
-  </lst>
-</searchComponent>
+  <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
+    <lst name="spellchecker">
+      <str name="name">default</str>
+      <str name="field">text_spell</str>
+      <str name="classname">solr.DirectSolrSpellChecker</str>
+      <str name="distanceMeasure">internal</str>
+      <float name="accuracy">0.3</float>
+      <int name="maxEdits">2</int>
+      <int name="minPrefix">1</int>
+      <int name="maxInspections">5</int>
+      <int name="minQueryLength">3</int>
+      <float name="maxQueryFrequency">10</float>
+      <float name="thresholdTokenerequency">1</float>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">wordbreak</str>
+      <str name="classname">solr.WordBreakSolrSpellChecker</str>
+      <str name="field">text_spell</str>
+      <str name="combineWords">true</str>
+      <str name="breakWords">true</str>
+      <int name="maxChanges">2</int>
+    </lst>
+  </searchComponent>
 
   <requestHandler name="/spell" class="org.apache.solr.handler.component.SearchHandler" startup="lazy">
 	<lst name="defaults">
@@ -599,7 +607,7 @@
       <str>spellcheck</str>
     </arr>
   </requestHandler>
-
+	
   <!-- Terms Component
 
        http://wiki.apache.org/solr/TermsComponent
