@@ -587,7 +587,7 @@
       <int name="maxInspections">5</int>
       <int name="minQueryLength">3</int>
       <float name="maxQueryFrequency">10</float>
-      <float name="thresholdTokenerequency">1</float>
+      <float name="thresholdTokenFrequency">3</float>
     </lst>
     <lst name="spellchecker">
       <str name="name">wordbreak</str>
