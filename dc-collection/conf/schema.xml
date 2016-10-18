@@ -190,7 +190,9 @@
    <field name="rights_holder" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="rights_note" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="rights_date" type="text_general" indexed="true" stored="true"/>
+   <field name="rights_uri" type="string" indexed="true" stored="true"/>
    <field name="source" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <field name="spatial" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="subject" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="temporal" type="text_general" indexed="true" stored="true" multiValued="true"/>
    <field name="transcription" type="text_general" indexed="true" stored="true"/>
@@ -314,6 +316,7 @@
    <copyField source="rights_note" dest="rights_note_ss"/> 
    <copyField source="rights_date" dest="rights_date_s"/> 
    <copyField source="source" dest="source_ss"/> 
+   <copyField source="spatial" dest="spatial_ss"/> 
    <copyField source="subject" dest="subject_ss"/> 
    <copyField source="temporal" dest="temporal_ss"/> 
    <copyField source="type" dest="type_ss"/> 
@@ -341,6 +344,7 @@
    <copyField source="rights_note" dest="text_spell"/> 
    <copyField source="rights_date" dest="text_spell"/> 
    <copyField source="source" dest="text_spell"/> 
+   <copyField source="spatial" dest="text_spell"/> 
    <copyField source="subject" dest="text_spell"/> 
    <copyField source="temporal" dest="text_spell"/> 
    <copyField source="type" dest="text_spell"/> 
