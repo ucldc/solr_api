@@ -13,13 +13,19 @@ cd $DIR
 
 usage(){
     ./beanstalk-describe.sh ucldc-solr
-    echo "deploy-version.sh version-label environment-name"
+    echo "deploy-version.sh version-label environment-name <version-description>"
     exit 1
 }
 
-if [ $# -ne 2 ];
+if [ $# -lt 2 ];
   then
     usage
+fi
+
+description=''
+if [ $# -eq 3 ];
+  then
+	description=$3
 fi
 
 set -u
@@ -58,6 +64,7 @@ aws --region $REGION s3 cp $ZIP "s3://$BUCKET/$DIR/$ZIP"
 aws elasticbeanstalk create-application-version \
   --application-name $APPNAME \
   --region $REGION \
+  --description "${description}" \
   --source-bundle S3Bucket=$BUCKET,S3Key=$DIR/$ZIP \
   --version-label "$1"
 
