@@ -625,18 +625,6 @@
       <filter class="solr.LowerCaseFilterFactory"/>
       <!-- The TrimFilter removes any leading or trailing whitespace -->
       <filter class="solr.TrimFilterFactory"/>
-      <!-- The PatternReplaceFilter gives you the flexibility to use
-             Java Regular expression to replace any sequence of characters
-             matching a pattern with an arbitrary replacement string, 
-             which may include back references to portions of the original
-             string matched by the pattern.
-             
-             See the Java Regular Expression documentation for more
-             information on pattern and replacement string syntax.
-             
-             http://docs.oracle.com/javase/7/docs/api/java/util/regex/package-summary.html
-          -->
-      <filter class="solr.PatternReplaceFilterFactory" pattern="([^a-z\s])" replacement="" replace="all"/>
     </analyzer>
   </fieldType>
   <!-- lowercases the entire field value, keeping it as a single token.  -->
