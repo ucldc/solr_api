@@ -5,33 +5,24 @@ import ConfigParser
 import datetime
 import solr
 
-def get_collection_urls(SOLR, api_key):
-    q_collections=SOLR(q="*:*", rows=0, facet_field="collection_url",
-     facet="true", facet_limit=-1)
-    facets = q_collections.facet_counts
-    f_fields = facets['facet_fields']
-    return f_fields['collection_url']
-
-def get_random_docs(SOLR, collection_urls):
+def get_collection_docs(SOLR, collection_url):
     docs = []
-    for u in collection_urls:
-        recs_in_coll = SOLR(q="collection_url:{}".format(u))
-        num = recs_in_coll.numFound
-        sample_size = num / 100 if num / 100 else 1
-        print "CID:{} NUMBER:{} SAMPLE:{}".format(
-                u.rsplit('/', 2)[1], num, sample_size)
-        for i in range(sample_size):
-            rand_index = random.randrange(num)
-            q_rec = SOLR(q="collection_url:{}".format(u), rows=1, start=rand_index)
-            #save locally
+    recs_batch = SOLR(q="collection_url:{}".format(collection_url))
+    num = recs_batch.numFound
+    print "CID:{} NUMBER:{}".format(
+                collection_url.rsplit('/', 2)[1], num)
+    while len(recs_batch.results):
+        for rec in recs_batch:
             doc_new = {}
-            for key, val in q_rec.results[0].items():
+            print rec['id']
+            for key, val in rec.items():
                 if '_ss' in key:
                     continue
                 if key in ['score', '_version_', 'timestamp',]:
                     continue
                 doc_new[key] = val
             docs.append(doc_new)
+        recs_batch = recs_batch.next_batch()
     return docs
 
 def serialize_datetime(obj):
@@ -67,16 +58,29 @@ def create_new_random_test_index(outfile, source_solr, dest_solr,
     DEST_SOLR=solr.Solr(dest_solr, post_headers = { 'X-Authentication-Token':  dest_api_key})
     save_to_local_solr(DEST_SOLR, docs_selected)
 
+def copy_collection_docs(outfile, source_solr, dest_solr, collection_url,
+        source_api_key=None, dest_api_key=None):
+    SOURCE_SOLR=solr.SearchHandler(solr.Solr(source_solr,
+        post_headers = { 'X-Authentication-Token':  source_api_key}),
+        "/query")
+    docs_selected = get_collection_docs(SOURCE_SOLR, collection_url)
+    save_docs_to_file(docs_selected, fname=outfile)
+    DEST_SOLR=solr.Solr(dest_solr, post_headers = { 'X-Authentication-Token':  dest_api_key})
+    save_to_local_solr(DEST_SOLR, docs_selected)
+
 if __name__=="__main__":
-    print 'Generate new test data set'
+    print 'Grab a collection to dest solr'
     parser = argparse.ArgumentParser()
     parser.add_argument('--outfile', type=str)
-    parser.add_argument('--update-dest', type=boolean, default=True)
+    parser.add_argument('collection_key', type=str)
     args = parser.parse_args()
-    outfile = 'random_solr_docs-{}.json'.format(
+    c_key = args.collection_key
+    collection_url = 'https://registry.cdlib.org/api/v1/collection/{}/'.format(
+            c_key)
+    outfile = '{}-{}.json'.format(
+            c_key,
             datetime.datetime.now().strftime('%Y%m%d-%H%M'))
     outfile = args.outfile if args.outfile else  outfile
-
     #READ solr sources and keys from gen_random.ini
     config = ConfigParser.SafeConfigParser()
     config.read('gen_random.ini')
@@ -85,6 +89,7 @@ if __name__=="__main__":
     dest_solr = config.get('dest-solr', 'solrUrl')
     dest_api_key = config.get('dest-solr', 'solrAuth')
 
-    create_new_random_test_index(outfile, source_solr=source_solr,
+    copy_collection_docs(outfile, source_solr=source_solr,
+            collection_url=collection_url,
             dest_solr=dest_solr, source_api_key=source_api_key,
             dest_api_key=dest_api_key)
