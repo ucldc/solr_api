@@ -39,4 +39,4 @@ EXPOSE 8983
 WORKDIR /opt/solr
 VOLUME /opt/solr/server/solr/dc-collection/data
 
-CMD ["/bin/bash", "-c", "/opt/solr/bin/solr -Xms1g -Xmx3g -f"]
+CMD ["/bin/bash", "-c", "/opt/solr/bin/solr -m3g -f"]
