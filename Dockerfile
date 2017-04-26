@@ -5,7 +5,7 @@ MAINTAINER  Mark Redar "mredar@gmail.com"
 ENV SOLR_VERSION 5.1.0
 ENV SOLR solr-$SOLR_VERSION
 ENV SOLR_USER solr
-ENV SOLR_JAVA_MEM="-Xms512m -Xmx3g"
+ENV SOLR_HEAP="3g"
 
 #COPY $SOLR.tgz /opt/ #if downloaded, may want to do before hand, takes long
 #time to download
