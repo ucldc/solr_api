@@ -190,10 +190,12 @@
         this will then be passed to the IIIF server for nicely
         sized images.
         For now you can use md5s3stash to calculate url to image -->
-  <field name="reference_image_md5" type="string" stored="true"/>
+  <field name="reference_image_md5" type="string" indexed="true" stored="true"/>
   <field name="reference_image_dimensions" type="string" stored="true"/>
   <field name="structmap_text" type="text_general" indexed="true" stored="false"/>
-  <field name="structmap_url" type="string" indexed="true" stored="true"/>
+  <field name="structmap_url" type="string" indexed="false" stored="true"/>
+  <field name="manifest" type="string" indexed="false" stored="true"/>
+  <field name="object_template" type="string" indexed="false" stored="true"/>
   <field name="item_count" type="int" indexed="true" stored="true"/>
 
   <!-- copyField won't work, need to explicitly set sort_title from
