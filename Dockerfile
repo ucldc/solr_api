@@ -12,7 +12,10 @@ ENV SOLR_HEAP="3g"
 WORKDIR /opt/
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
-  apt-get update && \
+  echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" \
+    > /etc/apt/sources.list.d/jessie-backports.list && \
+  sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list && \
+  apt-get -o Acquire::Check-Valid-Until=false update && \
   apt-get -y install bzip2 awscli &&\
   wget -nv --output-document=/opt/$SOLR.tgz http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz && \ 
   tar -xvf $SOLR.tgz && \
