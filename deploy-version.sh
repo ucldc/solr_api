@@ -34,7 +34,7 @@ ZIP="ucldc-solr-ebs-$1.zip"
 DIR=ucldc-solr-beanstalk
 BUCKET=solr.ucldc
 REGION=us-west-2
-APPNAME=ucldc-solr
+APPNAME=ucldc-solr2
 
 # make sure environment actually exists
 env_exists=$(aws elasticbeanstalk describe-environments \
@@ -48,9 +48,11 @@ if [[ env_exists -ne 1 ]]
     usage    
 fi
 
+aws --region=us-west-2 s3 cp s3://solr.ucldc/token_auth .platform/nginx/
+
 rm -f $ZIP
 # package app and upload
-zip $ZIP -r dc-collection/ .ebextensions/ \
+zip $ZIP -r dc-collection/ .ebextensions/ .platform/ \
     Dockerfile Dockerrun.aws.json \
     solr-5.1.0.tgz
 
