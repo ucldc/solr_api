@@ -1,4 +1,4 @@
-FROM    java:8
+FROM    amazoncorretto:8
 # from https://github.com/makuk66/docker-solr
 MAINTAINER  Mark Redar "mredar@gmail.com"
 
@@ -11,12 +11,8 @@ ENV SOLR_HEAP="3g"
 #time to download
 WORKDIR /opt/
 
-RUN export DEBIAN_FRONTEND=noninteractive && \
-  echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" \
-    > /etc/apt/sources.list.d/jessie-backports.list && \
-  sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list && \
-  apt-get -o Acquire::Check-Valid-Until=false update && \
-  apt-get -y install bzip2 awscli &&\
+RUN yum update -y && \
+  yum -y install bzip2 awscli wget tar gzip shadow-utils &&\
   wget -nv --output-document=/opt/$SOLR.tgz http://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR.tgz && \ 
   tar -xvf $SOLR.tgz && \
   groupadd -r $SOLR_USER && \
