@@ -1,6 +1,6 @@
 FROM    amazoncorretto:8
 # from https://github.com/makuk66/docker-solr
-MAINTAINER  Mark Redar "mredar@gmail.com"
+MAINTAINER  Amy Wieliczka "Amy.Wieliczka@ucop.edu"
 
 ENV SOLR_VERSION 5.1.0
 ENV SOLR solr-$SOLR_VERSION
